@@ -57,21 +57,21 @@ The following diagram illustrates how the AI Code Review Tool integrates with **
 
 ```mermaid
 graph TD;
-    User -->|Submits Code| WebUI
-    WebUI -->|Sends Code| API Gateway
-    API Gateway -->|Routes Request| CodeReviewService
-    CodeReviewService -->|Processes with AI| Ollama
-    CodeReviewService -->|Stores Data| FileProcessingService
-    FileProcessingService -->|Uses| RabbitMQ
-    API Gateway -->|Routes to| AuthService
-    AuthService -->|Handles Authentication| OAuth2.0
-    API Gateway -->|Routes Logs| LoggingService
-    LoggingService -->|Monitors| Prometheus & Serilog
-    VSIX -->|Sends Code| API Gateway
-    API Gateway -->|Routes to| CodeReviewService
-    GitHub -->|Triggers Webhooks| GitHubIntegrationService
-    GitHubIntegrationService -->|Fetches Code| GitHub API
-    GitHubIntegrationService -->|Posts AI Feedback| Pull Request Comments
+    User -->|Submits Code| WebUI;
+    WebUI -->|Sends Code| APIGateway;
+    APIGateway -->|Routes Request| CodeReviewService;
+    CodeReviewService -->|Processes with AI| Ollama;
+    CodeReviewService -->|Stores Data| FileProcessingService;
+    FileProcessingService -->|Uses| RabbitMQ;
+    APIGateway -->|Routes to| AuthService;
+    AuthService -->|Handles Authentication| OAuth2.0;
+    APIGateway -->|Routes Logs| LoggingService;
+    LoggingService -->|Monitors| Prometheus & Serilog;
+    VSIX -->|Sends Code| APIGateway;
+    APIGateway -->|Routes to| CodeReviewService;
+    GitHub -->|Triggers Webhooks| GitHubIntegrationService;
+    GitHubIntegrationService -->|Fetches Code| GitHub API;
+    GitHubIntegrationService -->|Posts AI Feedback| PullRequestComments;
 ```
 
 ## Installation & Setup
