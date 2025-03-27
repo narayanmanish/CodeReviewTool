@@ -16,13 +16,21 @@ The system follows a **microservices architecture** and consists of the followin
 | **AuthService**             | Authentication Service          | ASP.NET Core Identity (**OAuth2.0**)           |
 | **LoggingService**          | Logging & Monitoring Service    | ASP.NET Core Web API (**Serilog, Prometheus**) |
 
-## Features
-- AI-powered code review using **Ollama**
-- API Gateway for routing and load balancing
-- File processing with **RabbitMQ** for asynchronous tasks
-- GitHub & Visual Studio integration
-- Authentication using **OAuth 2.0**
-- Centralized logging and monitoring with **Serilog** and **Prometheus**
+## AI Code Review - Best Open-Source Models
+For AI-powered **code review**, the following **open-source** models can be used with **Ollama**:
+
+| **Model**            | **Description** | **Languages Supported** |
+|----------------------|----------------|------------------------|
+| **CodeLlama**        | Meta’s model fine-tuned for code generation and understanding | Python, C#, Java, JavaScript, C++, Go, etc. |
+| **StarCoder**        | Open-weight model trained on 80+ programming languages | Python, JavaScript, Java, TypeScript, C++, C# |
+| **WizardCoder**      | Fine-tuned for code generation and refactoring | Python, C++, Java, JavaScript |
+| **Phind-CodeLlama**  | Optimized for developer Q&A, code explanations, and debugging | Python, C++, JavaScript, Java |
+
+### **Best Model Selection Based on Use Case**
+- **General Code Review & Bug Detection** → **StarCoder**  
+- **AI-Powered Code Suggestions & Completion** → **WizardCoder**  
+- **Code Understanding & Explanations** → **CodeLlama**  
+- **Developer Q&A & Debugging** → **Phind-CodeLlama**  
 
 ## Development Roadmap
 
@@ -43,6 +51,28 @@ The system follows a **microservices architecture** and consists of the followin
 - [ ] Use GitHub API to fetch code from repositories
 - [ ] Post AI feedback as PR comments
 - [ ] Automate reviews in GitHub Actions
+
+## Architecture Diagram
+The following diagram illustrates how the AI Code Review Tool integrates with **Web UI, Visual Studio Extension, and GitHub**:
+
+```mermaid
+graph TD;
+    User -->|Submits Code| WebUI
+    WebUI -->|Sends Code| API Gateway
+    API Gateway -->|Routes Request| CodeReviewService
+    CodeReviewService -->|Processes with AI| Ollama
+    CodeReviewService -->|Stores Data| FileProcessingService
+    FileProcessingService -->|Uses| RabbitMQ
+    API Gateway -->|Routes to| AuthService
+    AuthService -->|Handles Authentication| OAuth2.0
+    API Gateway -->|Routes Logs| LoggingService
+    LoggingService -->|Monitors| Prometheus & Serilog
+    VSIX -->|Sends Code| API Gateway
+    API Gateway -->|Routes to| CodeReviewService
+    GitHub -->|Triggers Webhooks| GitHubIntegrationService
+    GitHubIntegrationService -->|Fetches Code| GitHub API
+    GitHubIntegrationService -->|Posts AI Feedback| Pull Request Comments
+```
 
 ## Installation & Setup
 ### Prerequisites
