@@ -38,11 +38,22 @@ This project provides an AI-powered code review tool with multiple integrations:
 4. Automate reviews in GitHub Actions
 
 ## Open Source AI Models for Code Review
-- **Code Llama** (Meta)
-- **StarCoder** (BigCode)
-- **WizardCoder** (WizardLM)
-- **Phi-2** (Microsoft)
-- **SantaCoder** (BigCode)
+
+| Model            | Description                                         | Languages Supported                          |
+|-----------------|-----------------------------------------------------|---------------------------------------------|
+| **CodeLlama**   | Meta’s model fine-tuned for code generation and understanding | Python, C#, Java, JavaScript, C++, Go, etc. |
+| **StarCoder**   | Open-weight model trained on 80+ programming languages | Python, JavaScript, Java, TypeScript, C++, C# |
+| **WizardCoder** | Fine-tuned for code generation and refactoring | Python, C++, Java, JavaScript |
+| **Phind-CodeLlama** | Optimized for developer Q&A, code explanations, and debugging | Python, C++, JavaScript, Java |
+
+## Usage
+These models can be integrated into various applications for AI-powered code reviews, bug detection, and automated improvements.
+
+## References
+- [CodeLlama GitHub](https://github.com/facebookresearch/codellama)
+- [StarCoder GitHub](https://github.com/bigcode-project/starcoder)
+- [WizardCoder GitHub](https://github.com/nlpxucan/WizardLM)
+- [Phind-CodeLlama GitHub](https://github.com/phind-ai/phind-codellama)
 
 ## Architecture Diagram
 ```mermaid
